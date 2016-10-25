@@ -59,10 +59,3 @@ class DRBSynth
     @devices[device][:metadata].name
   end
 end
-
-synth = DRBSynth.new
-synth.start_drb
-
-# synth.list_devices.each do |device|
-#   puts device.pretty_name
-# end
