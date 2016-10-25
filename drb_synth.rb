@@ -2,6 +2,7 @@ require 'drb/drb'
 require 'midi'
 require 'yaml'
 require 'ostruct'
+require 'logger'
 
 class DRBSynth
 
@@ -10,6 +11,9 @@ class DRBSynth
   def initialize
     @synths = []
     @devices = {}
+
+    @log = Logger.new(STDOUT)
+    @log.level = Logger::INFO
 
     configuration
 
@@ -30,7 +34,7 @@ class DRBSynth
   end
 
   def note(value, device)
-    puts "Note: #{value}, Device: #{device_name(device)}"
+    @log.info("Note: #{value}, Device: #{device_name(device)}")
     generate(device, value)
   end
 
